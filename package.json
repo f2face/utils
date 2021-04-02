@@ -1,0 +1,19 @@
+{
+  "name": "f2face-utils",
+  "version": "1.0.0",
+  "description": "Helper modules",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/f2face/utils.git"
+  },
+  "author": "f2face",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/f2face/utils/issues"
+  },
+  "homepage": "https://github.com/f2face/utils#readme"
+}
