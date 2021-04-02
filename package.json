@@ -1,6 +1,6 @@
 {
   "name": "f2face-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helper modules",
   "main": "index.js",
   "scripts": {

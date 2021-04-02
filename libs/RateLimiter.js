@@ -15,23 +15,33 @@ class RateLimiter {
         let _done = 0;
 
         /**
+         * Execute blocks of code with rate limit.
          * 
          * @param {somethingToLimt} callback 
          */
         this.rateLimited = (callback) => {
             if (_setTimeout == null) {
                 _setTimeout = setTimeout(() => {
-                    clearTimeout(_setTimeout);
-                    _setTimeout = null;
-                    _done = 0;
+                    this.resetLimit();
                 }, interval);
             }
 
             if (freq > 0 && _done < freq && _setTimeout != null) {
                 _done++;
-                if (typeof callback === 'function')
-                    callback(freq - _done);
+                if (typeof callback === 'function') {
+                    let remainingLimit = freq - _done;
+                    callback(remainingLimit);
+                }
             }
+        }
+
+        /**
+         * Reset limit.
+         */
+        this.resetLimit = () => {
+            clearTimeout(_setTimeout);
+            _setTimeout = null;
+            _done = 0;
         }
     }
 }
