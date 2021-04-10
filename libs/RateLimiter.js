@@ -14,6 +14,8 @@ class RateLimiter {
         let _setTimeout = null;
         let _done = 0;
 
+        this.state = null;
+
         /**
          * Execute blocks of code with rate limit.
          * 
@@ -42,6 +44,17 @@ class RateLimiter {
             clearTimeout(_setTimeout);
             _setTimeout = null;
             _done = 0;
+        }
+
+        /**
+         * Revert limit.
+         */
+        this.revertLimit = () => {
+            clearTimeout(_setTimeout);
+            _setTimeout = null;
+            if (_done > 0) {
+                _done--;
+            }
         }
     }
 }
