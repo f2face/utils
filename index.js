@@ -1,4 +1,5 @@
 module.exports = {
     RateLimiter: require('./libs/RateLimiter'),
-    Sleep: require('./libs/Sleep')
+    Repeat: require('./libs/Repeat'),
+    Sleep: require('./libs/Sleep'),
 }
