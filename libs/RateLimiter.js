@@ -1,14 +1,8 @@
 class RateLimiter {
     /**
      * 
-     * @callback somethingToLimt Block code to apply rate limit to.
-     * @param {number} remainingLimit Number of remaining limit.
-     */
-
-    /**
-     * 
-     * @param {number} freq Frequency per interval.
-     * @param {number} interval Interval time in miliseconds.
+     * @param {number} freq - Frequency per interval.
+     * @param {number} interval - Interval time in miliseconds.
      */
     constructor(freq, interval) {
         let _setTimeout = null;
@@ -18,8 +12,8 @@ class RateLimiter {
 
         /**
          * Execute blocks of code with rate limit.
-         * 
-         * @param {somethingToLimt} callback 
+         * @param {Function} callback - Block code to apply rate limit to.
+         * @returns {void}
          */
         this.rateLimited = (callback) => {
             if (_setTimeout == null) {
@@ -31,6 +25,7 @@ class RateLimiter {
             if (freq > 0 && _done < freq && _setTimeout != null) {
                 _done++;
                 if (typeof callback === 'function') {
+                    /** @type {number} - Number of remaining limit. */
                     let remainingLimit = freq - _done;
                     callback(remainingLimit);
                 }
@@ -39,6 +34,7 @@ class RateLimiter {
 
         /**
          * Reset limit.
+         * @returns {void}
          */
         this.resetLimit = () => {
             clearTimeout(_setTimeout);
@@ -48,6 +44,7 @@ class RateLimiter {
 
         /**
          * Revert limit.
+         * @returns {void}
          */
         this.revertLimit = () => {
             clearTimeout(_setTimeout);
